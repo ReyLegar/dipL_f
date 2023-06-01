@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Подтверждение заявки на кредит</title>
+</head>
+<body>
+    <h1>Подтверждение заявки на кредит</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="payment_period">Срок кредита (в месяцах):</label><br>
+        <input type="number" id="term" name="term" required><br>
+        <label for="interest_rate">Процент по кредиту:</label><br>
+        <input type="number" id="interest_rate" name="interest_rate" required><br>
+        <label for="payment_document">Фотография документа:</label><br>
+        <input type="file" name="document" id="document" accept=".jpg, .jpeg, .png" required>
+        <input type="submit" value="Подтвердить">
+    </form>
+</body>
+</html>

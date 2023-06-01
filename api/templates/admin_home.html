@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>Администраторская страница</title>
+    <style>
+        body {
+            background-color: #F9F9F9;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .header-title {
+            color: #4CAF50;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-buttons {
+            display: flex;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            margin-left: 10px;
+        }
+        .button:hover {
+            background-color: #2E8B57;
+        }
+        .button-secondary {
+            background-color: #CCCCCC;
+        }
+        .button-secondary:hover {
+            background-color: #B3B3B3;
+        }
+        h2 {
+            text-align: center;
+            color: #333333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        li {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 10px 20px;
+            background-color: #FFFFFF;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            margin-left: 10px;
+        }
+        .button:hover {
+            background-color: #2E8B57;
+        }
+        .button-secondary {
+            background-color: #CCCCCC;
+        }
+        .button-secondary:hover {
+            background-color: #B3B3B3;
+        }
+        .empty-users {
+            text-align: center;
+            color: #999999;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">Страница администратора</div>
+        <div class="header-buttons">
+            <a href="{% url 'create_user' %}" class="button">Создать нового пользователя</a>
+            <a href="{% url 'credit_applications' %}" class="button">Заявки на кредиты</a>
+            <a href="{% url 'active_credits' %}" class="button">Действующие кредиты</a>
+        </div>
+        {% if admin_user_name %}
+            <div class="header-admin-name">Администратор: {{ admin_user_name }}</div>
+        {% endif %}
+    </div>
+    <h2>Пользователи:</h2>
+    {% if users %}
+    <ul>
+    {% for user in users %}
+        {% if not user.is_admin %}
+            <li>
+                <span>{{user.last_name }} {{ user.first_name }} {{ user.patronymic }}</span>
+                <a href="{% url 'user_info' user.id %}" class="button">Подробнее</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                </ul>
+                {% else %}
+                <p class="empty-users">Пользователей не найдено.</p>
+                {% endif %}
+                
+                </body>
+                </html>

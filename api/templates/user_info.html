@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Информация о пользователе</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        .user-info {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .user-info h2 {
+            margin-bottom: 20px;
+        }
+        .user-info table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .user-info th, .user-info td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        .user-info th {
+            background-color: #f2f2f2;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        .button:hover {
+            background-color: #2E8B57;
+        }
+        .user-info img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Информация о пользователе</h1>
+    <div class="user-info">
+        <h2>Информация о {{ user.last_name }} {{ user.first_name }} {{ user.patronymic }}</h2>
+        <table>
+            <tr>
+                <th>Имя:</th>
+                <td>{{ user.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Фамилия:</th>
+                <td>{{ user.last_name }}</td>
+            </tr>
+            <tr>
+                <th>Отчество:</th>
+                <td>{{ user.patronymic }}</td>
+            </tr>
+            <tr>
+                <th>Номер телефона:</th>
+                <td>{{ user.phone_number }}</td>
+            </tr>
+            <tr>
+                <th>Баланс:</th>
+                <td>{{ user.balance }}</td>
+            </tr>
+        </table>
+        <img src="{{ user.document_image.url }}">
+    </div>
+    <a href="{% url 'admin_home' %}" class="button">Назад к списку пользователей</a>
+</body>
+</html> 

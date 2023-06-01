@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Заявки на кредит</title>
+</head>
+<body>
+	<h1>Заявки на кредит</h1>
+	<ul>
+	  {% for credit_application in credit_applications %}
+	  <li>
+	    {{ credit_application.user.first_name }} хочет занять {{ credit_application.amount }}.
+	    {% if credit_application.status == 'Ожидает' %}
+	    <form method="post" action="{% url 'confirm_credit_application' credit_application.id %}">
+	      {% csrf_token %}
+	      <button type="submit" name="action" value="approve">Подтвердить</button>
+	      <button type="submit" name="action" value="reject">Отклонить</button>
+	    </form>
+	    {% else %}
+	    ({{ credit_application.get_status_display }})
+	    {% endif %}
+	  </li>
+	  {% empty %}
+	  <li>Нет заявок на кредит.</li>
+	  {% endfor %}
+	</ul>
+</body>
+</html>

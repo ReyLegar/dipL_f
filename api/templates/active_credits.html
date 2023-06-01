@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Действующие кредиты</title>
+</head>
+<body>
+  <h1>Действующие кредиты</h1>
+  {% if active_credits %}
+    <ul>
+      {% for credit in active_credits %}
+        <li>
+          <p>Пользователь: {{ credit.user.first_name }}</p>
+          <p>Сумма кредита: {{ credit.amount }}</p>
+          <p>Дата оплаты: {{ credit.payment_dates }}</p>
+          <img src="{{ credit.image.url }}" alt="Кредитное заявление">
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Нет активных кредитов</p>
+  {% endif %}
+</body>
+</html>

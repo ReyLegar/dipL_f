@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Создание нового пользователя</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin: 0 auto;
+            width: 50%;
+            text-align: center;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        input[type="password"] {
+            width: 300px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            display: inline-block;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Создание нового пользователя</h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="phone_number">Номер телефона:</label>
+      <input type="text" name="phone_number" id="phone_number" required>
+      <br>
+      <label for="first_name">Имя:</label>
+      <input type="text" name="first_name" id="first_name" required>
+      <br>
+      <label for="last_name">Фамилия:</label>
+      <input type="text" name="last_name" id="last_name" required>
+      <br>
+      <label for="patronymic">Отчество:</label>
+      <input type="text" name="patronymic" id="patronymic" required>
+      <br>
+      <label for="balance">Баланс:</label>
+      <input type="number" name="balance" id="balance" min="0" step="0.01" required>
+      <br>
+      <label for="document_image">Фото документа:</label>
+      <input type="file" name="document_image" id="document_image" required>
+      <br>
+      <label for="password">Пароль:</label>
+      <input type="password" name="password" id="password" required>
+      <br>
+      <input type="submit" value="Создать пользователя">
+    </form>
+  </body>
+</html>
